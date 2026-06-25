@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const termsSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Terms & Conditions - Ad Revenue Calculator",
+  url: "https://adsrevenuecalculator.com/terms",
+};
+---
+
+<BaseLayout
+  title="Terms & Conditions | Ad Revenue Calculator"
+  description="Terms of service and conditions for using the Ads Revenue Calculator tools."
+  schema={termsSchema}
+  canonicalUrl="https://adsrevenuecalculator.com/terms"
+>
+  <div class="mx-auto max-w-4xl space-y-6 leading-7 text-[var(--color-body)] mt-12 p-4">
+ 
+    <h1 class="mb-6 text-4xl font-bold tracking-tight text-[var(--color-ink)] md:text-5xl">
+      Terms & Conditions
+    </h1>
+
+    <p>
+      These terms and conditions outline the rules and regulations for the use
+      of the Ads Revenue Calculator website, located at
+      <a
+        href="https://adsrevenuecalculator.com"
+        class="text-[var(--color-link)] hover:underline"
+      >
+        adsrevenuecalculator.com
+      </a>.
+    </p>
+
+    <h2 class="mt-8 mb-4 text-2xl font-bold text-[var(--color-ink)]">
+      1. Acceptance of Terms
+    </h2>
+
+    <p>
+      By accessing this website, we assume you accept these terms and
+      conditions. Do not continue to use Ads Revenue Calculator if you do not
+      agree to all of the terms and conditions stated on this page.
+    </p>
+
+    <h2 class="mt-8 mb-4 text-2xl font-bold text-[var(--color-ink)]">
+      2. Disclaimer of Accuracy
+    </h2>
+
+    <p>
+      The calculators and estimation tools provided on this website are for
+      informational and educational purposes only. The results displayed are
+      <strong> estimates </strong> based on industry averages and the data you
+      input.
+    </p>
+
+    <p>
+      Ad revenue fluctuates constantly based on variables outside our control,
+      including but not limited to user geography, ad blockers, platform
+      algorithm changes, advertiser demand, and seasonal variations.
+    </p>
+
+    <p>
+      <strong>
+        We do not guarantee any specific financial results or earnings.
+      </strong>
+      You should not make financial, business, or life decisions solely based
+      on the outputs of our calculators.
+    </p>
+
+    <h2 class="mt-8 mb-4 text-2xl font-bold text-[var(--color-ink)]">
+      3. Intellectual Property Rights
+    </h2>
+
+    <p>
+      Unless otherwise stated, Ads Revenue Calculator and/or its licensors own
+      the intellectual property rights for all material on Ads Revenue
+      Calculator. All intellectual property rights are reserved. You may access
+      this website for your own personal use, subject to the restrictions set
+      in these terms and conditions.
+    </p>
+
+    <h2 class="mt-8 mb-4 text-2xl font-bold text-[var(--color-ink)]">
+      4. Limitations of Liability
+    </h2>
+
+    <p>
+      In no event shall Ads Revenue Calculator, nor any of its officers,
+      directors, or employees, be held liable for anything arising out of or in
+      any way connected with your use of this website.
+    </p>
+
+    <p>
+      We shall not be held liable for any indirect, consequential, or special
+      liability arising out of or in any way related to your use of this
+      website.
+    </p>
+
+  </div>
+</BaseLayout>

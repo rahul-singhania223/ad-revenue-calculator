@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://adsrevenuecalculator.com/sitemap-index.xml

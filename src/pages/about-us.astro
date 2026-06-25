@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About Us - Ad Revenue Calculator",
+  url: "https://adsrevenuecalculator.com/about",
+  description:
+    "Learn about the mission and team behind the internet's most accurate Ad Revenue Calculator.",
+};
+---
+
+<BaseLayout
+  title="About Us | Ad Revenue Calculator"
+  description="Learn about the mission and team behind the internet's most accurate Ad Revenue Calculator for YouTube, Twitch, and Websites."
+  schema={aboutSchema}
+  canonicalUrl="https://adsrevenuecalculator.com/about"
+>
+  <div class="mx-auto max-w-4xl space-y-6 leading-7 text-[var(--color-body)] p-4">
+
+    <h1 class="mb-6 text-4xl font-bold tracking-tight text-[var(--color-ink)] md:text-5xl">About Us</h1>
+
+    <h2 class="mt-8 mb-4 text-2xl font-bold text-[var(--color-ink)]">
+      Our Mission
+    </h2>
+
+    <p>
+      The digital landscape is vast, and understanding how much a platform
+      pays can often feel like navigating a maze.
+      <strong>Ads Revenue Calculator</strong> was built to demystify the
+      monetization process. Whether you are a YouTuber trying to figure out
+      if your next video will cover rent, a developer launching a mobile
+      game, or a blogger scaling traffic, we provide the math so you can
+      focus on creating.
+    </p>
+
+    <h2 class="mt-8 mb-4 text-2xl font-bold text-[var(--color-ink)]">
+      Why Trust Our Data?
+    </h2>
+
+    <p>
+      Ad revenue is highly volatile, dependent on geography, ad blockers,
+      viewer retention, and niche. Instead of offering a flat, generic
+      guess, we aggregate industry-standard RPM (Revenue Per Mille) and CPC
+      (Cost Per Click) data across dozens of specific niches. We constantly
+      monitor platform updates to ensure our calculator reflects the current
+      market.
+    </p>
+
+    <div class="mt-12 rounded-xl border border-[var(--color-hairline)] bg-[var(--color-canvas-soft)] p-8 text-center">
+      <h3 class="mb-2 text-xl font-bold text-[var(--color-ink)]">
+        Ready to calculate your worth?
+      </h3>
+
+      <p class="mb-6">
+        Head back to our main tool and select your platform.
+      </p>
+
+      <a
+        href="/"
+        class="inline-flex items-center justify-center rounded-lg bg-[var(--color-primary)] px-6 py-3 font-medium text-[var(--color-on-primary)] transition-opacity hover:opacity-90"
+      >
+        Go to Calculator
+      </a>
+    </div>
+
+  </div>
+</BaseLayout>

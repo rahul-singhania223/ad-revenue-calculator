@@ -1,0 +1,119 @@
+---
+const faqs = [
+  {
+    question: "What does ad revenue mean?",
+    answer:
+      "Ad revenue refers to the monetary income earned by individuals, creators, publishers, or businesses by displaying advertisements on their digital properties. In the digital marketing world, this is typically calculated using models like CPM (Cost Per Mille / Thousand Impressions), CPC (Cost Per Click), or CPA (Cost Per Action). When a user views, clicks, or interacts with an ad, the advertiser pays the platform (like Google or Facebook), and the platform shares a percentage of that payment with the content creator."
+  },
+  {
+    question: "What is an example of ad revenue?",
+    answer:
+      "There are many examples of ad revenue across different mediums. A classic example is a YouTuber earning money when a non-skippable video ad plays before their content. Another example is a blogger who places Google AdSense banner ads within their articles; they earn a small amount every time a reader clicks on those banners. Similarly, mobile app developers earn ad revenue by showing interstitial ads or rewarded video ads to their active users."
+  },
+  {
+    question: "How much ad revenue per 1,000,000 views?",
+    answer:
+      "The ad revenue generated from 1,000,000 views varies drastically depending on the platform, audience location, and niche. On YouTube, one million views typically generate between $1,500 and $12,000. On platforms like TikTok or Instagram Reels, 1 million views might only generate between $10 and $100. For websites, 1 million pageviews can generate $10,000 to $25,000 with premium ad networks."
+  },
+  {
+    question: "Can 500 subscribers make money?",
+    answer:
+      "Yes. YouTube allows creators with 500 subscribers, 3 uploads in the last 90 days, and either 3,000 watch hours or 3 million Shorts views to access fan funding features. Traditional ad revenue still requires 1,000 subscribers and 4,000 watch hours or 10 million Shorts views."
+  },
+  {
+    question: "Does YouTube take 50% of ad revenue?",
+    answer:
+      "No. YouTube's standard revenue split for long-form videos is 55/45 in favor of creators. For Shorts, creators receive 45% of the allocated creator pool."
+  },
+  {
+    question: "How much is a 30 second ad worth?",
+    answer:
+      "Digital advertisers typically pay between $10 and $50 CPM. If an advertiser pays a $20 CPM and the platform gives creators 55%, the creator earns roughly $11 per 1,000 views."
+  },
+  {
+    question: "Do we really see 4000 ads a day?",
+    answer:
+      "Possibly. Estimates range from 4,000 to 10,000 daily brand exposures. Most are filtered out subconsciously and never become conscious impressions."
+  },
+  {
+    question: "Is ad revenue taxable?",
+    answer:
+      "Yes. Ad revenue is taxable income in most countries. Creators are generally treated as self-employed individuals and must report earnings, while also being able to deduct eligible business expenses."
+  },
+  {
+    question: "What are the 7 types of advertisements?",
+    answer:
+      "1. Display Ads\n2. Video Ads\n3. Search Ads\n4. Social Media Ads\n5. Native Advertising\n6. Audio & Podcast Ads\n7. Email Marketing Ads"
+  }
+];
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+}
+
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<section class="mx-auto max-w-4xl py-16 px-4">
+  <div class="mb-10">
+    <h2 class="text-3xl font-bold tracking-tight text-[var(--color-ink)]">
+      Frequently Asked Questions
+    </h2>
+
+    <p class="mt-3 text-[15px] leading-6 text-[var(--color-body)]">
+      Everything you need to know about advertising revenue.
+    </p>
+  </div>
+
+  <div class="divide-y divide-[var(--color-hairline)] rounded-xl border border-[var(--color-hairline)] bg-[var(--color-canvas)]">
+    {faqs.map((faq) => (
+      <details class="group px-6 py-1">
+        <summary
+          class="flex cursor-pointer list-none items-center justify-between py-5 text-left font-medium text-[var(--color-ink)] marker:hidden"
+        >
+          <span class="pr-8">{faq.question}</span>
+
+          <svg
+            class="h-4 w-4 shrink-0 text-[var(--color-mute)] transition-transform duration-200 group-open:rotate-45"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              d="M8 3V13M3 8H13"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </summary>
+
+        <div class="pb-5">
+          <p class="whitespace-pre-line text-[15px] leading-7 text-[var(--color-body)]">
+            {faq.answer}
+          </p>
+        </div>
+      </details>
+    ))}
+  </div>
+
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(faqSchema)}
+  />
+</section>

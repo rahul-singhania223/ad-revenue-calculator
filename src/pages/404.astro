@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="404 — Page Not Found | Ad Revenue Calculator"
+  description="The page you were looking for doesn't exist. Head back to the Ad Revenue Calculator."
+>
+  <div class="not-found-wrapper">
+
+    <!-- Mesh gradient blob (hero accent, confined to this section only) -->
+    <div class="mesh-gradient" aria-hidden="true"></div>
+
+    <div class="not-found-inner">
+
+      <!-- Mono eyebrow -->
+      <p class="eyebrow">Error 404</p>
+
+      <!-- Display headline -->
+      <h1 class="headline">Page not found.</h1>
+
+      <!-- Body copy -->
+      <p class="body-copy">
+        This URL doesn't point anywhere. It may have been moved, deleted, or it never existed.
+        Double-check the address, or go back to the calculator.
+      </p>
+
+      <!-- CTAs -->
+      <div class="cta-group">
+        <a href="/" class="btn-primary">Go to Calculator</a>
+        <a href="javascript:history.back()" class="btn-secondary">Go Back</a>
+      </div>
+
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  /* ── Wrapper ── */
+  .not-found-wrapper {
+    position: relative;
+    min-height: calc(100vh - 64px); /* subtract nav height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa; /* canvas */
+    overflow: hidden;
+    padding: 96px 24px;
+  }
+
+  /* ── Mesh gradient — the only decorative element, same stop palette as hero ── */
+  .mesh-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 40%, rgba(0, 124, 240, 0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 75% 30%, rgba(121, 40, 202, 0.10) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 45% at 55% 75%, rgba(255, 0, 128, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 40% at 85% 70%, rgba(249, 203, 40, 0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 10% 80%, rgba(0, 223, 216, 0.09) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  /* ── Content ── */
+  .not-found-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 560px;
+  }
+
+  /* Mono eyebrow — Geist Mono, uppercase, 12px/500 */
+  .eyebrow {
+    font-family: 'Geist Mono', 'JetBrains Mono', 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #8f8f8f; /* mute */
+    margin: 0 0 24px;
+  }
+
+  /* Display headline — Geist Sans 600, -2.4px tracking */
+  .headline {
+    font-family: 'Geist Sans', 'Geist', Inter, Arial, sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 48px;
+    letter-spacing: -2.4px;
+    color: #171717; /* ink */
+    margin: 0 0 20px;
+  }
+
+  /* Body copy */
+  .body-copy {
+    font-family: 'Geist Sans', 'Geist', Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #4d4d4d; /* body */
+    margin: 0 0 40px;
+  }
+
+  /* ── CTA group ── */
+  .cta-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Primary pill — black marketing CTA */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 20px;
+    background-color: #171717; /* primary / ink */
+    color: #ffffff; /* on-primary */
+    font-family: 'Geist Sans', 'Geist', Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0;
+    border-radius: 100px; /* pill */
+    text-decoration: none;
+    border: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.85;
+  }
+
+  /* Secondary pill — white outlined */
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 20px;
+    background-color: #ffffff; /* canvas-elevated */
+    color: #171717; /* ink */
+    font-family: 'Geist Sans', 'Geist', Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0;
+    border-radius: 100px; /* pill */
+    text-decoration: none;
+    border: 1px solid #ebebeb; /* hairline */
+    transition: border-color 0.15s ease;
+  }
+
+  .btn-secondary:hover {
+    border-color: #c0c0c0;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .not-found-wrapper {
+      padding: 64px 20px;
+    }
+
+    .headline {
+      font-size: 36px;
+      line-height: 38px;
+      letter-spacing: -1.6px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+    }
+
+    .cta-group {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .btn-primary,
+    .btn-secondary {
+      transition: none;
+    }
+  }
+</style>

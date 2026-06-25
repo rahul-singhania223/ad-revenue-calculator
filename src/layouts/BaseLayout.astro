@@ -1,0 +1,212 @@
+---
+import { SEO } from "astro-seo";
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FAQ from "../components/FAQ.astro";
+
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  type?: "website" | "article";
+  image?: string;
+  schema?: Record<string, any>;
+}
+
+const { 
+  title, 
+  description, 
+  canonicalUrl = Astro.url.href,
+  type = "website",
+  // Fallback to a default OpenGraph image
+  image = new URL("/og-image.jpg", Astro.site).href,
+  schema
+} = Astro.props;
+
+// Enforce trailing slashes consistently. Ahrefs will flag duplicate content 
+// if /calculator and /calculator/ both exist. 
+const finalCanonicalUrl = canonicalUrl.endsWith('/') ? canonicalUrl : `${canonicalUrl}/`;
+---
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    
+    <!-- Apple Touch Icon is required for a perfect Lighthouse PWA score -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Preconnect to external resources early (e.g., Google Fonts or Analytics) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E86D616F0J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E86D616F0J');
+    </script>
+
+    <SEO
+      title={title}
+      description={description}
+      canonical={finalCanonicalUrl}
+      openGraph={{
+        basic: {
+          title: title,
+          type: type,
+          image: image,
+          url: finalCanonicalUrl,
+        },
+        optional: {
+          description: description,
+          locale: "en_US",
+        }
+      }}
+      twitter={{
+        card: "summary_large_image",
+        title: title,
+        description: description,
+        image: image,
+      }}
+      extend={{
+        meta: [
+          // These directives tell Google to show large image previews and full snippets
+          { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+          { name: "author", content: "Rahul Singhania" }
+        ],
+        link: [
+          { rel: "sitemap", href: "/sitemap-index.xml" }
+        ]
+      }}
+    />
+
+    <!-- Dynamic JSON-LD Schema Injection -->
+    {schema && (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    )}
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased min-h-screen flex flex-col">
+    
+    <!-- Skip to content link: Mandatory for 100% Lighthouse Accessibility score -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-white focus:z-50 focus:text-blue-600">
+      Skip to main content
+    </a>
+    
+    <Header />
+
+    <main id="main-content" class="flex-grow">
+      <slot />     
+
+      <!-- Comprehensive SEO Content Section (600+ Words) -->
+  <div >
+
+    <div class="mx-auto max-w-5xl space-y-6 leading-7 text-[var(--color-body)] mt-12 p-4">
+
+
+     <!-- Interactive Step-by-Step Instructions -->
+    <div class="max-w-none text-center mb-12">
+      <h2 class="text-3xl font-bold text-ink mb-4">How to calculate ad revenue?</h2>
+      <p class="text-body max-w-3xl mx-auto">
+        Using our platform is incredibly straightforward. Just follow these four steps to get a highly accurate estimation of your digital ad income.
+      </p>
+    </div>
+
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16">
+
+      <!-- Step 1 -->
+      <div class="group bg-canvas p-8 rounded-2xl border border-hairline shadow-sm hover:-translate-y-2 hover:shadow-lg transition-all duration-300 relative overflow-hidden">
+        <div class="absolute -right-12 -top-12 w-40 h-40 bg-gradient-to-br from-gradient-develop-start to-gradient-develop-end opacity-10 rounded-full group-hover:scale-150 transition-transform duration-700 ease-out"></div>
+        <div class="relative z-10">
+          <div class="w-14 h-14 bg-gradient-to-br from-gradient-develop-start to-gradient-develop-end text-on-primary rounded-xl flex items-center justify-center font-bold text-2xl mb-6 shadow-sm group-hover:rotate-6 transition-transform duration-300">1</div>
+          <h3 class="text-xl font-bold text-ink mb-3">Select Your Platform</h3>
+          <p class="text-sm text-body leading-relaxed">Choose the appropriate tab at the top of the calculator. Whether you need a <strong>youtube ad revenue calculator</strong> or a <strong>website ad revenue calculator</strong>, the underlying math engine adjusts automatically.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="group bg-canvas p-8 rounded-2xl border border-hairline shadow-sm hover:-translate-y-2 hover:shadow-lg transition-all duration-300 relative overflow-hidden">
+        <div class="absolute -right-12 -top-12 w-40 h-40 bg-gradient-to-br from-gradient-preview-start to-gradient-preview-end opacity-10 rounded-full group-hover:scale-150 transition-transform duration-700 ease-out"></div>
+        <div class="relative z-10">
+          <div class="w-14 h-14 bg-gradient-to-br from-gradient-preview-start to-gradient-preview-end text-on-primary rounded-xl flex items-center justify-center font-bold text-2xl mb-6 shadow-sm group-hover:-rotate-6 transition-transform duration-300">2</div>
+          <h3 class="text-xl font-bold text-ink mb-3">Choose Your Niche</h3>
+          <p class="text-sm text-body leading-relaxed">Advertisers pay a premium to reach audiences interested in Finance and Tech compared to General Entertainment. Select the category that best matches your content to dynamically adjust your baseline RPM.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="group bg-canvas p-8 rounded-2xl border border-hairline shadow-sm hover:-translate-y-2 hover:shadow-lg transition-all duration-300 relative overflow-hidden">
+        <div class="absolute -right-12 -top-12 w-40 h-40 bg-gradient-to-br from-gradient-ship-start to-gradient-ship-end opacity-10 rounded-full group-hover:scale-150 transition-transform duration-700 ease-out"></div>
+        <div class="relative z-10">
+          <div class="w-14 h-14 bg-gradient-to-br from-gradient-ship-start to-gradient-ship-end text-on-primary rounded-xl flex items-center justify-center font-bold text-2xl mb-6 shadow-sm group-hover:rotate-6 transition-transform duration-300">3</div>
+          <h3 class="text-xl font-bold text-ink mb-3">Enter Your Traffic</h3>
+          <p class="text-sm text-body leading-relaxed">Use the slider or input box to enter your exact total views, monthly page views, or app impressions. The tool will calculate earnings in real-time as you type.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="group bg-canvas p-8 rounded-2xl border border-hairline shadow-sm hover:-translate-y-2 hover:shadow-lg transition-all duration-300 relative overflow-hidden">
+        <div class="absolute -right-12 -top-12 w-40 h-40 bg-primary opacity-5 rounded-full group-hover:scale-150 transition-transform duration-700 ease-out"></div>
+        <div class="relative z-10">
+          <div class="w-14 h-14 bg-primary text-on-primary rounded-xl flex items-center justify-center font-bold text-2xl mb-6 shadow-sm group-hover:-rotate-6 transition-transform duration-300">4</div>
+          <h3 class="text-xl font-bold text-ink mb-3">View Your Estimates</h3>
+          <p class="text-sm text-body leading-relaxed">Instantly view your Expected, Conservative, and Optimistic earnings to get a realistic picture of your potential ad income across all selected platforms.</p>
+        </div>
+      </div>
+
+    </div>
+    </div>
+    
+
+
+
+    <!-- Long-form SEO Content -->
+    <article class="prose prose-slate max-w-4xl mx-auto mb-20 text-body leading-relaxed mt-12 p-4">
+      <h2 class="text-3xl font-bold text-ink mb-6 text-center">The Ultimate Online Ad Revenue Calculator</h2>
+      <p>
+        Whether you are a content creator, a blog owner, or an app developer, understanding your potential income is the first step toward building a sustainable digital business. Our free <strong>online ad revenue calculator</strong> takes the guesswork out of monetization. By utilizing industry-standard data, we provide precise earnings estimates across all major digital platforms.
+      </p>
+
+      <h3 class="text-2xl font-bold text-ink mt-10 mb-4">YouTube Ad Revenue Calculator</h3>
+      <p>
+        Video content is king, and YouTube remains the largest monetization platform for creators. If you are looking for a reliable <strong>youtube ad revenue calculator</strong>, you need a tool that understands that not all views are created equal. Advertisers pay wildly different rates depending on your audience's demographic and your content niche. For example, a finance channel will have a significantly higher RPM (Revenue Per Mille) than a gaming channel. Our tool functions as the perfect <strong>ad revenue calculator youtube</strong> creators rely on because it allows you to select your specific niche, giving you an expected, conservative, and optimistic projection of your video's earning potential.
+      </p>
+
+      <h3 class="text-2xl font-bold text-ink mt-10 mb-4">Google Ads Revenue Calculator for Websites</h3>
+      <p>
+        For bloggers and digital publishers, display advertising remains a primary income stream. Utilizing our <strong>website ad revenue calculator</strong> allows you to forecast your monthly income based on real-world website traffic. To use our tool as a <strong>google ads revenue calculator</strong> (or a standard <strong>google ad revenue calculator</strong> for premium networks like Mediavine and Raptive), simply navigate to the "Website" tab. You will be prompted to enter your monthly pageviews, your average Click-Through Rate (CTR), and your expected Cost Per Click (CPC). Because website revenue relies on users actually clicking the ads, adjusting these two metrics will show you exactly how SEO and UI optimization tweaks can drastically increase your bottom line.
+      </p>
+
+      <h3 class="text-2xl font-bold text-ink mt-10 mb-4">Twitch Ad Revenue Calculator</h3>
+      <p>
+        Live streaming has its own unique monetization ecosystem. A streamer's income isn't just about total channel views; it is heavily dependent on concurrent viewership and the duration of the stream. Our <strong>twitch ad revenue calculator</strong> is specifically calibrated for live broadcasters. By inputting your average concurrent viewers and your total hours streamed per month, the calculator estimates your ad breaks and outputs a reliable monthly ad revenue forecast. This allows you to plan your streaming schedule around your actual financial goals.
+      </p>
+
+      <h3 class="text-2xl font-bold text-ink mt-10 mb-4">Why Use Our Ad Revenue Calculator Website?</h3>
+      <p>
+        There are many generic calculators available, but our <strong>ad revenue calculator</strong> goes deeper. We don't just ask for a flat view count. We incorporate niche multipliers, platform-specific algorithms, and tiered estimates. Whether you are an influencer negotiating brand deals and needing a baseline RPM, or a webmaster projecting quarterly SEO growth, our tool provides the granular data you need to scale your digital empire.
+      </p>
+    </article>
+
+   
+   
+    <!-- Dynamic FAQ Section -->
+    <div class=" border-t border-hairline max-w-4xl mx-auto">
+      <FAQ />
+    </div>
+
+  </div>
+    </main>
+
+    <Footer />
+
+  </body>
+</html>

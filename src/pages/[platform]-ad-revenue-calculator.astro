@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Calculator from '../components/Calculator.tsx';
+
+// 1. This function tells Astro EXACTLY which URLs to generate at build time
+export function getStaticPaths() {
+  return [
+    { params: { platform: 'youtube' } },
+    { params: { platform: 'twitch' } },
+    { params: { platform: 'website' } },
+    { params: { platform: 'app' } },
+    { params: { platform: 'instagram' } },
+    { params: { platform: 'facebook' } },
+  ];
+}
+
+const { platform } = Astro.params;
+
+// 2. SEO Metadata specifically tailored to the current URL
+const seoData = {
+  youtube: {
+    title: "YouTube Ad Revenue Calculator | Estimate Video Earnings",
+    description: "Use our precise youtube ad revenue calculator. Input your exact video views and select your niche to find out how much money a single YouTube video makes.",
+    heading: "YouTube Ad Revenue Calculator",
+    metricText: "total video views"
+  },
+  twitch: {
+    title: "Twitch Ad Revenue Calculator | Streamer Earnings Tool",
+    description: "Our twitch ad revenue calculator helps streamers estimate monthly earnings based on channel views and category averages.",
+    heading: "Twitch Ad Revenue Calculator",
+    metricText: "monthly channel views"
+  },
+  website: {
+    title: "Website Ad Revenue Calculator | Google AdSense Estimator",
+    description: "A highly accurate website ad revenue calculator. Input your monthly pageviews, niche, CTR, and CPC to estimate your monthly website income.",
+    heading: "Website Ad Revenue Calculator",
+    metricText: "monthly pageviews"
+  },
+  app: {
+    title: "Mobile Game Ad Revenue Calculator | eCPM App Estimator",
+    description: "The ultimate mobile game ad revenue calculator and app ad revenue calculator. Discover how much your mobile app can earn monthly through ad networks.",
+    heading: "App & Mobile Game Ad Revenue Calculator",
+    metricText: "monthly ad impressions"
+  },
+  instagram: {
+    title: "Instagram Ad Revenue Calculator | Reels & Feed Earnings",
+    description: "Estimate your monthly earnings from Instagram Reels, in-feed ads, and brand deals based on your monthly impressions.",
+    heading: "Instagram Ad Revenue Calculator",
+    metricText: "monthly impressions"
+  },
+  facebook: {
+    title: "Facebook Ad Revenue Calculator | In-Stream & Reels Earnings",
+    description: "Calculate your potential monthly income from Facebook In-Stream Video Ads and Reels based on your monthly views.",
+    heading: "Facebook Ad Revenue Calculator",
+    metricText: "monthly video views"
+  }
+};
+
+const currentSEO = seoData[platform as keyof typeof seoData];
+
+// 3. Dynamic WebApplication Schema for Search Engines
+const calculatorSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": currentSEO.title,
+  "url": `https://adsrevenuecalculator.com/${platform}-ad-revenue-calculator`,
+  "description": currentSEO.description,
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+};
+---
+
+<BaseLayout 
+  title={currentSEO.title}
+  description={currentSEO.description}
+  canonicalUrl={`https://adsrevenuecalculator.com/${platform}-ad-revenue-calculator`}
+  schema={calculatorSchema}
+>
+  
+  <header class="pt-20 pb-12 px-4 text-center max-w-4xl mx-auto">
+    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-gradient-develop-start to-gradient-develop-end">
+        {currentSEO.heading}
+      </span>
+    </h1>
+    <p class="text-lg md:text-xl text-body mb-8">
+      Select your niche and input your exact <strong>{currentSEO.metricText}</strong> below to get an accurate estimate of your earnings.
+    </p>
+  </header>
+
+  <section class="px-4 pb-20">
+    {/* Pass the dynamic platform from the URL into the React component */}
+    <Calculator initialPlatform={platform as any} client:load />
+  </section>
+
+</BaseLayout>

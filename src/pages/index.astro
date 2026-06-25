@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Calculator from '../components/Calculator.tsx';
+import FAQ from '../components/FAQ.astro';
+
+// 1. Base WebApplication Schema for Rich Snippets
+const calculatorSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Ad Revenue Calculator",
+  "url": "https://adsrevenuecalculator.com",
+  "description": "The ultimate online ad revenue calculator. Calculate your potential earnings for YouTube, Google Ads, Websites, and Twitch.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+};
+---
+
+<BaseLayout
+  title="Ad Revenue Calculator | YouTube, Website & Google Ads Earnings"
+  description="The ultimate online ad revenue calculator. Accurately estimate your earnings with our youtube ad revenue calculator, google ads revenue calculator, and twitch ad revenue calculator."
+  schema={calculatorSchema}
+>
+
+  <!-- Hero Section -->
+
+  <!-- Calculator Island - client:load makes it interactive immediately -->
+  <div class="mt-12">
+    <Calculator client:load />
+  </div>
+
+  
+
+</BaseLayout>

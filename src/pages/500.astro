@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="500 — Internal Server Error | Ad Revenue Calculator"
+  description="Something went wrong on our end. We're working on it."
+>
+  <div class="error-wrapper">
+    <div class="mesh-gradient" aria-hidden="true"></div>
+    <div class="error-inner">
+      <p class="eyebrow">Error 500</p>
+      <h1 class="headline">Something went wrong.</h1>
+      <p class="body-copy">
+        This is on us, not you. An unexpected error occurred on our server.
+        Try refreshing the page — if the problem persists, check back in a few minutes.
+      </p>
+      <div class="cta-group">
+        <a href="/" class="btn-primary">Go to Calculator</a>
+        <button onclick="window.location.reload()" class="btn-secondary">Refresh Page</button>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .error-wrapper {
+    position: relative;
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+    overflow: hidden;
+    padding: 96px 24px;
+  }
+
+  /* Ship gradient stops — red/amber — signals something broke */
+  .mesh-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 40%, rgba(255, 77, 77, 0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 75% 30%, rgba(249, 203, 40, 0.10) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 45% at 55% 75%, rgba(255, 77, 77, 0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 85% 65%, rgba(249, 203, 40, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .error-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 560px;
+  }
+
+  .eyebrow {
+    font-family: 'Geist Mono', 'JetBrains Mono', 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #8f8f8f;
+    margin: 0 0 24px;
+  }
+
+  .headline {
+    font-family: 'Geist Sans', 'Geist', Inter, Arial, sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 48px;
+    letter-spacing: -2.4px;
+    color: #171717;
+    margin: 0 0 20px;
+  }
+
+  .body-copy {
+    font-family: 'Geist Sans', 'Geist', Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #4d4d4d;
+    margin: 0 0 40px;
+  }
+
+  .cta-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 20px;
+    background-color: #171717;
+    color: #ffffff;
+    font-family: 'Geist Sans', 'Geist', Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+
+  .btn-primary:hover { opacity: 0.85; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 20px;
+    background-color: #ffffff;
+    color: #171717;
+    font-family: 'Geist Sans', 'Geist', Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    border: 1px solid #ebebeb;
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+  }
+
+  .btn-secondary:hover { border-color: #c0c0c0; }
+
+  @media (max-width: 640px) {
+    .error-wrapper { padding: 64px 20px; }
+    .headline { font-size: 36px; line-height: 38px; letter-spacing: -1.6px; }
+    .btn-primary, .btn-secondary { width: 100%; }
+    .cta-group { width: 100%; flex-direction: column; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-primary, .btn-secondary { transition: none; }
+  }
+</style>
